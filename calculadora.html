@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="477833.png" type="image/x-icon">
+  <title>Calculadora de Salário Líquido</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 50%;
+      padding: 8px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #244425;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #resultado {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<center>
+  <h2>Calculadora de Salário Líquido</h2>
+</center>
+  
+<center>
+   <label for="salarioBruto">Salário Bruto:</label>
+  <input type="number" id="salarioBruto" placeholder="Informe o salário bruto" required>
+
+  <label for="inss">Desconto INSS %:</label>
+  <input type="number" id="inss" placeholder="Informe o percentual de desconto do INSS" required>
+
+  <label for="impostoRenda">Desconto Imposto de Renda%:</label>
+  <input type="number" id="impostoRenda" placeholder="Informe o percentual de desconto do Imposto de Renda" required>
+
+  
+
+  <div id="resultado"></div
+</center>
+ 
+<button onclick="calcularSalarioLiquido()">Calcular</button>
+  <script>
+    function calcularSalarioLiquido() {
+      var salarioBruto = parseFloat(document.getElementById('salarioBruto').value);
+      var descontoINSS = parseFloat(document.getElementById('inss').value);
+      var descontoImpostoRenda = parseFloat(document.getElementById('impostoRenda').value);
+
+      // Calcular descontos
+      var inss = salarioBruto * (descontoINSS / 100);
+      var ir = salarioBruto * (descontoImpostoRenda / 100);
+
+      // Calcular salário líquido
+      var salarioLiquido = salarioBruto - inss - ir;
+
+      // Exibir resultado
+      var resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.innerHTML = "<h3>Resultado:</h3>" +
+                               "<p>Salário Bruto: R$ " + salarioBruto.toFixed(2) + "</p>" +
+                               "<p>Desconto INSS: R$ " + inss.toFixed(2) + "</p>" +
+                               "<p>Desconto Imposto de Renda: R$ " + ir.toFixed(2) + "</p>" +
+                               "<p>Salário Líquido: R$ " + salarioLiquido.toFixed(2) + "</p>";
+    }
+  </script>
+
+</body>
+</html>

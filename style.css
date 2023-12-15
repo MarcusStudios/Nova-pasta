@@ -1,0 +1,10 @@
+body{
+    
+}
+.titulo{
+    color: green;
+}
+.card1{
+    display: flexbox;     
+    position: -ms-page;
+}
